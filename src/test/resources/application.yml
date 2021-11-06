@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: report-processor
+kafka:
+  bootstrap-servers: ${spring.embedded.kafka.brokers}
+  consumer:
+    topic: reports.requests
+    group-id: report-processor.main
+    client-id-prefix: report-processor
