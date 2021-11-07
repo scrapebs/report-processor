@@ -3,8 +3,7 @@ package com.sinkovdenis.reportprocessor;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class ServiceApplicationTests {
+class ServiceApplicationTests extends GenericTest{
 
 	@Test
 	void contextLoads() {

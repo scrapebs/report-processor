@@ -1,5 +1,5 @@
 package com.sinkovdenis.reportprocessor.model;
 
 public enum ReportType {
-    SALES_REPORT, RETURNS_REPORT
+    SALES_REPORT, REFUNDS_REPORT
 }

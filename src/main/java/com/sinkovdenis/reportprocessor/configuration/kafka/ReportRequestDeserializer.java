@@ -1,6 +1,6 @@
 package com.sinkovdenis.reportprocessor.configuration.kafka;
 
-import com.sinkovdenis.reportprocessor.model.GenericReportRequest;
+import com.sinkovdenis.reportprocessor.model.request.GenericReportRequest;
 import org.springframework.kafka.support.serializer.JsonDeserializer;
 
 public class ReportRequestDeserializer extends JsonDeserializer<GenericReportRequest > {

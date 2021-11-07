@@ -12,7 +12,7 @@
 	<artifactId>report-processor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>report-processor</name>
-	<description>Get request from kafka, takes data from database and sends response via email</description>
+	<description>Get request from kafka, extracts data from database and sends response via email</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -66,6 +66,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

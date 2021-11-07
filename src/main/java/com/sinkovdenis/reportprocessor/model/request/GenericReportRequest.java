@@ -1,8 +1,9 @@
-package com.sinkovdenis.reportprocessor.model;
+package com.sinkovdenis.reportprocessor.model.request;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.sinkovdenis.reportprocessor.model.ReportType;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 

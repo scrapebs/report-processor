@@ -1,4 +1,4 @@
-package com.sinkovdenis.reportprocessor.model;
+package com.sinkovdenis.reportprocessor.model.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
