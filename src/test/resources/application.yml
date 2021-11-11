@@ -17,6 +17,6 @@ spring:
 kafka:
   bootstrap-servers: ${spring.embedded.kafka.brokers}
   consumer:
-    topic: reports.requests
-    group-id: report-processor.main
-    client-id-prefix: report-processor
+    topic: test_topic
+    group-id: test_groupId
+    client-id-prefix: test-client-id

@@ -4,7 +4,6 @@ import com.sinkovdenis.reportprocessor.component.report.ReportProcessor;
 import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
-import com.sinkovdenis.reportprocessor.persistence.entity.RefundEntity;
 import com.sinkovdenis.reportprocessor.persistence.entity.SaleEntity;
 import com.sinkovdenis.reportprocessor.persistence.repo.SaleRepository;
 import lombok.RequiredArgsConstructor;

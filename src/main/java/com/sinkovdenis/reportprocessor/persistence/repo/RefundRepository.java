@@ -1,7 +1,6 @@
 package com.sinkovdenis.reportprocessor.persistence.repo;
 
 import com.sinkovdenis.reportprocessor.persistence.entity.RefundEntity;
-import com.sinkovdenis.reportprocessor.persistence.entity.SaleEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Date;

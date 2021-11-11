@@ -5,7 +5,6 @@ import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
 import com.sinkovdenis.reportprocessor.persistence.entity.RefundEntity;
-import com.sinkovdenis.reportprocessor.persistence.entity.SaleEntity;
 import com.sinkovdenis.reportprocessor.persistence.repo.RefundRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

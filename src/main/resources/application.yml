@@ -23,6 +23,7 @@ kafka:
     topic: reports.requests
     group-id: report-processor.main
     client-id-prefix: report-processor
+
 logging:
   level:
     root: INFO
