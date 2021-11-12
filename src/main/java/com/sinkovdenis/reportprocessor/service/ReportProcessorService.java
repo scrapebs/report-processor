@@ -1,6 +1,6 @@
 package com.sinkovdenis.reportprocessor.service;
 
-import com.sinkovdenis.reportprocessor.component.EmailSender;
+import com.sinkovdenis.reportprocessor.component.EmailNotifier;
 import com.sinkovdenis.reportprocessor.component.report.ReportProcessor;
 import com.sinkovdenis.reportprocessor.component.report.ReportProcessorResolver;
 import com.sinkovdenis.reportprocessor.model.Report;
@@ -15,13 +15,13 @@ import java.util.Optional;
 public class ReportProcessorService {
 
     private final ReportProcessorResolver reportProcessorResolver;
-    private final EmailSender emailSender;
+    private final EmailNotifier emailNotifier;
 
     public <R extends GenericReportRequest> void process(R request) {
         Optional<ReportProcessor<R>> reportProcessor = reportProcessorResolver.resolveBy(request);
         if (reportProcessor.isPresent()) {
             Report report = reportProcessor.get().process(request);
-            emailSender.sendReport(report);
+            emailNotifier.sendReport(report);
         } else {
             throw new IllegalArgumentException("Failed to find suitable processor for reportType" + request.getReportType());
         }

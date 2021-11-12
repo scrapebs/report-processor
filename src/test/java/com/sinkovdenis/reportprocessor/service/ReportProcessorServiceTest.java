@@ -1,6 +1,6 @@
 package com.sinkovdenis.reportprocessor.service;
 
-import com.sinkovdenis.reportprocessor.component.EmailSender;
+import com.sinkovdenis.reportprocessor.component.EmailNotifier;
 import com.sinkovdenis.reportprocessor.component.report.ReportProcessorResolver;
 import com.sinkovdenis.reportprocessor.component.report.date.ByDateOrderReportProcessor;
 import com.sinkovdenis.reportprocessor.model.Report;
@@ -25,7 +25,7 @@ public class ReportProcessorServiceTest {
     private ReportProcessorResolver reportProcessorResolver;
 
     @Mock
-    private EmailSender emailSender;
+    private EmailNotifier emailNotifier;
 
     @Mock
     private ByDateReportRequest request;
@@ -46,7 +46,7 @@ public class ReportProcessorServiceTest {
         service.process(request);
         verify(reportProcessorResolver).resolveBy(request);
         verify(reportProcessor).process(request);
-        verify(emailSender).sendReport(report);
+        verify(emailNotifier).sendReport(report);
     }
 
     @Test
