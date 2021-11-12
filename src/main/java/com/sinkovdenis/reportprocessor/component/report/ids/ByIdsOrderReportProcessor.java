@@ -4,8 +4,8 @@ import com.sinkovdenis.reportprocessor.component.report.ReportProcessor;
 import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
-import com.sinkovdenis.reportprocessor.persistence.entity.SaleEntity;
-import com.sinkovdenis.reportprocessor.persistence.repo.SaleRepository;
+import com.sinkovdenis.reportprocessor.persistence.entity.OrderEntity;
+import com.sinkovdenis.reportprocessor.persistence.repo.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +13,13 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ByIdsSaleReportProcessor implements ReportProcessor<ByIdsReportRequest> {
+public class ByIdsOrderReportProcessor implements ReportProcessor<ByIdsReportRequest> {
 
-    private final SaleRepository repository;
+    private final OrderRepository repository;
 
     @Override
     public ReportType getReportType() {
-        return ReportType.SALES_REPORT;
+        return ReportType.ORDERS_REPORT;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class ByIdsSaleReportProcessor implements ReportProcessor<ByIdsReportRequ
 
     @Override
     public Report process(ByIdsReportRequest request) {
-        List<SaleEntity> reportRows = repository.findByIdIn(request.getIds());
+        List<OrderEntity> reportRows = repository.findByIdIn(request.getIds());
         return createReport(request, reportRows);
     }
 }

@@ -1,14 +1,14 @@
 package com.sinkovdenis.reportprocessor.persistence.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "REFUNDS")
-public class RefundEntity {
+@Table(name = "ORDERS")
+public class OrderEntity {
 
     @Id
     @Column(name = "ID")
@@ -18,11 +18,15 @@ public class RefundEntity {
     @Basic(optional = false)
     private Date creationDate;
 
-    @Column(name = "ORDER_ID")
+    @Column(name = "PRODUCT_ID")
     @Basic(optional = false)
-    private String orderId;
+    private String productId;
 
-    @Column(name = "REASON")
+    @Column(name = "CUSTOMER_ID")
     @Basic(optional = false)
-    private String reason;
+    private String customerId;
+
+    @Column(name = "SUM")
+    @Basic(optional = false)
+    private Integer sum;
 }

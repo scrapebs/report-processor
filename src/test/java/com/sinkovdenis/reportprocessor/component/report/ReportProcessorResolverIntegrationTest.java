@@ -2,9 +2,9 @@ package com.sinkovdenis.reportprocessor.component.report;
 
 import com.sinkovdenis.reportprocessor.GenericNoKafkaTest;
 import com.sinkovdenis.reportprocessor.component.report.date.ByDateRefundReportProcessor;
-import com.sinkovdenis.reportprocessor.component.report.date.ByDateSaleReportProcessor;
+import com.sinkovdenis.reportprocessor.component.report.date.ByDateOrderReportProcessor;
 import com.sinkovdenis.reportprocessor.component.report.ids.ByIdsRefundReportProcessor;
-import com.sinkovdenis.reportprocessor.component.report.ids.ByIdsSaleReportProcessor;
+import com.sinkovdenis.reportprocessor.component.report.ids.ByIdsOrderReportProcessor;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
@@ -26,13 +26,13 @@ public class ReportProcessorResolverIntegrationTest extends GenericNoKafkaTest {
     private ByDateRefundReportProcessor byDateRefundReportProcessor;
 
     @Autowired
-    private ByDateSaleReportProcessor byDateSaleReportProcessor;
+    private ByDateOrderReportProcessor byDateOrderReportProcessor;
 
     @Autowired
     private ByIdsRefundReportProcessor byIdsRefundReportProcessor;
 
     @Autowired
-    private ByIdsSaleReportProcessor byIdsSaleReportProcessor;
+    private ByIdsOrderReportProcessor byIdsOrderReportProcessor;
 
 
     @Test
@@ -42,9 +42,9 @@ public class ReportProcessorResolverIntegrationTest extends GenericNoKafkaTest {
     }
 
     @Test
-    public void testResolveBy_salesReport_byDateRequest() {
-        ByDateReportRequest request = createByDateReportRequest(ReportType.SALES_REPORT);
-        assertThat(resolver.resolveBy(request)).isEqualTo(Optional.of(byDateSaleReportProcessor));
+    public void testResolveBy_ordersReport_byDateRequest() {
+        ByDateReportRequest request = createByDateReportRequest(ReportType.ORDERS_REPORT);
+        assertThat(resolver.resolveBy(request)).isEqualTo(Optional.of(byDateOrderReportProcessor));
     }
 
     @Test
@@ -54,8 +54,8 @@ public class ReportProcessorResolverIntegrationTest extends GenericNoKafkaTest {
     }
 
     @Test
-    public void testResolveBy_salesReport_byIdsRequest() {
-        ByIdsReportRequest request = createByIdsReportRequest(ReportType.SALES_REPORT);
-        assertThat(resolver.resolveBy(request)).isEqualTo(Optional.of(byIdsSaleReportProcessor));
+    public void testResolveBy_ordersReport_byIdsRequest() {
+        ByIdsReportRequest request = createByIdsReportRequest(ReportType.ORDERS_REPORT);
+        assertThat(resolver.resolveBy(request)).isEqualTo(Optional.of(byIdsOrderReportProcessor));
     }
 }

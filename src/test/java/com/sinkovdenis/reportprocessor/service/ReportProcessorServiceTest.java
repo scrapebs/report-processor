@@ -2,7 +2,7 @@ package com.sinkovdenis.reportprocessor.service;
 
 import com.sinkovdenis.reportprocessor.component.EmailSender;
 import com.sinkovdenis.reportprocessor.component.report.ReportProcessorResolver;
-import com.sinkovdenis.reportprocessor.component.report.date.ByDateSaleReportProcessor;
+import com.sinkovdenis.reportprocessor.component.report.date.ByDateOrderReportProcessor;
 import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import org.junit.Test;
@@ -31,7 +31,7 @@ public class ReportProcessorServiceTest {
     private ByDateReportRequest request;
 
     @Mock
-    private ByDateSaleReportProcessor reportProcessor;
+    private ByDateOrderReportProcessor reportProcessor;
 
     @Mock
     private Report report;

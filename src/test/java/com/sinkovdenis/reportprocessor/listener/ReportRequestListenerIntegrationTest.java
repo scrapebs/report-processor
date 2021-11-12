@@ -47,8 +47,8 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
         
         private TestSinglePartitionTopicHelper helper;
 
-        private static final ByDateReportRequest BY_DATE_REPORT_REQUEST = createByDateReportRequest(ReportType.SALES_REPORT);
-        private static final ByIdsReportRequest BY_IDS_REPORT_REQUEST = createByIdsReportRequest(ReportType.SALES_REPORT);
+        private static final ByDateReportRequest BY_DATE_REPORT_REQUEST = createByDateReportRequest(ReportType.ORDERS_REPORT);
+        private static final ByIdsReportRequest BY_IDS_REPORT_REQUEST = createByIdsReportRequest(ReportType.ORDERS_REPORT);
 
         @Before
         public void setUp() {

@@ -4,8 +4,8 @@ import com.sinkovdenis.reportprocessor.component.report.ReportProcessor;
 import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
-import com.sinkovdenis.reportprocessor.persistence.entity.SaleEntity;
-import com.sinkovdenis.reportprocessor.persistence.repo.SaleRepository;
+import com.sinkovdenis.reportprocessor.persistence.entity.OrderEntity;
+import com.sinkovdenis.reportprocessor.persistence.repo.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -13,13 +13,13 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class ByDateSaleReportProcessor implements ReportProcessor<ByDateReportRequest> {
+public class ByDateOrderReportProcessor implements ReportProcessor<ByDateReportRequest> {
 
-    private final SaleRepository repository;
+    private final OrderRepository repository;
 
     @Override
     public ReportType getReportType() {
-        return ReportType.SALES_REPORT;
+        return ReportType.ORDERS_REPORT;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class ByDateSaleReportProcessor implements ReportProcessor<ByDateReportRe
     }
 
     public Report process(ByDateReportRequest request) {
-        List<SaleEntity> reportRows = repository.findByCreationDateBetween(request.getFrom(), request.getTo());
+        List<OrderEntity> reportRows = repository.findByCreationDateBetween(request.getFrom(), request.getTo());
         return createReport(request, reportRows);
     }
 }
