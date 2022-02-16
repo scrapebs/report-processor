@@ -4,9 +4,14 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
-@Data
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode(of = {"id"})
+@ToString(exclude = {"refunds"})
 @Table(name = "ORDERS")
 public class OrderEntity {
 
@@ -17,10 +22,9 @@ public class OrderEntity {
     @Column(name = "CREATION_DATE")
     @Basic(optional = false)
     private Date creationDate;
-
-    @Column(name = "PRODUCT_ID")
-    @Basic(optional = false)
-    private String productId;
+    
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private List<OrderPositionEntity> orderPositions;
 
     @Column(name = "CUSTOMER_ID")
     @Basic(optional = false)
@@ -28,5 +32,12 @@ public class OrderEntity {
 
     @Column(name = "SUM")
     @Basic(optional = false)
-    private Integer sum;
+    private int sum;
+    
+    @Column(name = "ADDRESS")
+    @Basic(optional = false)
+    private String address;
+    
+    @OneToMany(mappedBy = "order", cascade = {CascadeType.ALL}, orphanRemoval = true)
+    private List<RefundEntity> refunds;
 }

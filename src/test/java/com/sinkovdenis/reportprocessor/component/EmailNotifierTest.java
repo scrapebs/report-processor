@@ -1,6 +1,6 @@
 package com.sinkovdenis.reportprocessor.component;
 
-import com.sinkovdenis.reportprocessor.configuration.MailConfiguration;
+import com.sinkovdenis.reportprocessor.configuration.MailConfigurationTest;
 import com.sinkovdenis.reportprocessor.model.Report;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ public class EmailNotifierTest {
     private JavaMailSender mailSender;
 
     @Mock
-    private MailConfiguration mailConfiguration;
+    private MailConfigurationTest mailConfiguration;
 
     @Mock
     private SimpleMailMessage message;

@@ -7,7 +7,6 @@ import java.util.Date;
 import java.util.List;
 
 public interface OrderRepository extends CrudRepository<OrderEntity, String> {
-
     List<OrderEntity> findByCreationDateBetween(Date from, Date to);
     List<OrderEntity> findByIdIn(List<String> ids);
 }
