@@ -25,4 +25,5 @@ public abstract class GenericReportRequest {
     private ReportType reportType;
     @NonNull
     private String email;
+    private Long requestId;
 }

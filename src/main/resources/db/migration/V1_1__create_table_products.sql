@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS products
 (
     id BIGINT NOT NULL,
     product_name CHARACTER VARYING(100),
-    price INTEGER,
+    price DOUBLE PRECISION,
     creation_date TIMESTAMP without time zone NOT NULL,
     CONSTRAINT pk_products_id PRIMARY KEY (id)
 );

@@ -32,7 +32,7 @@ public class OrderEntity {
 
     @Column(name = "SUM")
     @Basic(optional = false)
-    private int sum;
+    private double sum;
     
     @Column(name = "ADDRESS")
     @Basic(optional = false)

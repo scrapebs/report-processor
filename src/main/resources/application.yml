@@ -7,7 +7,7 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/reports
+    url: jdbc:postgresql://localhost:5432/commerce?ApplicationName=report-processor
     username: report_requester
     password: report_requester
   jpa:
@@ -18,10 +18,10 @@ spring:
     show-sql: true
 
   mail:
-    host: smtp.gmail.com
-    port: 587
-    username: secret
-    password: secret
+    host: smtp.yandex.ru
+    port: 465
+    username: scrapebs@yandex.ru
+    password: yfqgqqwkdzodhdmd
     protocol: smtp
     ssl: true
     debug: false

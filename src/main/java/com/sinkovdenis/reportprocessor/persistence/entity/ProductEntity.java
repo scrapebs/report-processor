@@ -26,7 +26,7 @@ public class ProductEntity {
     
     @Column(name = "PRICE")
     @Basic(optional = false)
-    private int price;
+    private double price;
 
     @Column(name = "CREATION_DATE")
     @Basic(optional = false)
