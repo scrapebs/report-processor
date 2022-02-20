@@ -11,7 +11,6 @@ import org.springframework.boot.autoconfigure.kafka.KafkaAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.annotation.KafkaListenerConfigurer;
 import org.springframework.kafka.config.ConcurrentKafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
@@ -28,7 +27,6 @@ import java.util.Map;
 @Slf4j
 @Profile("!kafka_off")
 @Configuration
-@EnableKafka
 @RequiredArgsConstructor
 public class KafkaListenerConfiguration implements KafkaListenerConfigurer {
 

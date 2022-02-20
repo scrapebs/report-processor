@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-public class EmailNotifier {
+public class ReportResultsEmailSender implements ReportResultsSender {
 
     private final JavaMailSender mailSender;
     private final MailConfiguration mailConfiguration;

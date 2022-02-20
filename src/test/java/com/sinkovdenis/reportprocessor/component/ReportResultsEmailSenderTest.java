@@ -14,7 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class EmailNotifierTest {
+public class ReportResultsEmailSenderTest {
 
     @Mock
     private JavaMailSender mailSender;
@@ -30,7 +30,7 @@ public class EmailNotifierTest {
 
     @Spy
     @InjectMocks
-    private EmailNotifier notifier;
+    private ReportResultsEmailSender notifier;
 
     @Test
     public void testSendReport() {

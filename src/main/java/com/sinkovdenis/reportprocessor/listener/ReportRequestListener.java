@@ -28,6 +28,10 @@ public class ReportRequestListener {
 
     @KafkaHandler
     public <R extends GenericReportRequest> void handle(@Payload R request) {
-       service.process(request);
+        try {
+            service.process(request);
+        } catch (Exception e) {
+            log.error("exception:", e);
+        }
     }
 }

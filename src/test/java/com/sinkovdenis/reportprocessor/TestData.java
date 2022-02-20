@@ -1,5 +1,6 @@
 package com.sinkovdenis.reportprocessor;
 
+import com.sinkovdenis.reportprocessor.model.ProcessingEvent;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
@@ -70,6 +71,13 @@ public class TestData {
 
         orderEntity.setOrderPositions(Arrays.asList(position1, position2));
         return orderEntity;
+    }
+    
+    public static ProcessingEvent createProcessingEvent() {
+        return ProcessingEvent.builder()
+                .requestId(100L)
+                .status(ProcessingEvent.ProcessingEventStatus.SUCCESS)
+                .build();
     }
 
 }

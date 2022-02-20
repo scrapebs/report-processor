@@ -29,3 +29,7 @@ kafka:
     topic: test_topic
     group-id: test_groupId
     client-id-prefix: test-client-id
+  producer:
+    topic: test_topic
+    sender-id: test_groupId
+    sender-name: test-client-id
