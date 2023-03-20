@@ -1,42 +1,58 @@
-server:
-  port: 8082
-
 spring:
   application:
     name: report-processor
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/commerce?ApplicationName=report-processor
-    username: report_requester
-    password: report_requester
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: false
     hibernate.ddl-auto: validate
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: true
 
   mail:
-    host: smtp.yandex.ru
-    port: 465
-    username: secret
-    password: secret
-    protocol: smtp
+    host: ${MAIL_HOST}
+    port: ${MAIL_PORT}
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    protocol: ${MAIL_PROTOCOL}
     ssl: true
     debug: false
 
 kafka:
-  bootstrap-servers: localhost:9092
+  bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS}
   consumer:
-    topic: reports.requests
-    group-id: report-processor.main
-    client-id-prefix: report-processor
+    topic: ${KAFKA_CONSUMER_TOPIC}
+    group-id: ${KAFKA_CONSUMER_GROUP_ID}
+    client-id-prefix: ${KAFKA_CONSUMER_CLIENT_ID_PREFIX}
   producer:
-    topic: reports.processing-events
-    sender-id: report-processor
-    sender-name: report-processor
+    topic: ${KAFKA_PRODUCER_TOPIC}
+    sender-id: ${KAFKA_PRODUCER_SENDER_ID}
+    sender-name: ${KAFKA_PRODUCER_SENDER_NAME}
+
+server:
+  port: 8082
 
 logging:
   level:
     root: INFO
+
+---
+spring:
+  config:
+    activate:
+      on-profile: dev
+
+  jpa:
+    show-sql: true
+
+  mail:
+    debug: false
+
+logging:
+  level:
+    org.springframework.orm.jpa: DEBUG
+    org.springframework.transaction: TRACE

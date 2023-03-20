@@ -4,14 +4,13 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/reports
-    username: report_requester
-    password: report_requester
+    url: jdbc:postgresql://localhost:5432/backoffice
+    username: report-processor
+    password: report-processor
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     generate-ddl: false
     hibernate.ddl-auto: validate
-    properties.hibernate.temp.use_jdbc_metadata_defaults: false
     show-sql: true
       
   mail:

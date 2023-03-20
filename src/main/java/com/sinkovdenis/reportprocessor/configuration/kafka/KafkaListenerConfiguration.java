@@ -62,9 +62,8 @@ public class KafkaListenerConfiguration implements KafkaListenerConfigurer {
 
     @Bean
     public Map<String, Object> consumerConfigs() {
-        Map<String, Object> props = new HashMap<>();
 
-        props.putAll(properties.getCommonClientProperties());
+        Map<String, Object> props = new HashMap<>(properties.getCommonClientProperties());
 
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, properties.getBootstrapServers());
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
