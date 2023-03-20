@@ -6,8 +6,8 @@ import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.model.request.ByIdsReportRequest;
 import lombok.SneakyThrows;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
@@ -34,7 +34,7 @@ import static org.mockito.Mockito.*;
         }
 )
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class ReportRequestListenerIntegrationTest extends GenericTest {
+class ReportRequestListenerIntegrationTest extends GenericTest {
 
         @SpyBean
         private ReportRequestListener listener;
@@ -44,13 +44,13 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
 
         @Autowired
         private KafkaListenerEndpointRegistry kafkaListenerEndpointRegistry;
-        
+
         private TestSinglePartitionTopicHelper helper;
 
         private static final ByDateReportRequest BY_DATE_REPORT_REQUEST = createByDateReportRequest(ReportType.ORDERS_REPORT);
         private static final ByIdsReportRequest BY_IDS_REPORT_REQUEST = createByIdsReportRequest(ReportType.ORDERS_REPORT);
 
-        @Before
+        @BeforeEach
         public void setUp() {
                 helper = new TestSinglePartitionTopicHelper(embeddedKafkaBroker, TimeUnit.SECONDS.toMillis(1));
                 helper.waitListeners(kafkaListenerEndpointRegistry);
@@ -58,7 +58,7 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
 
         @Test
         @SneakyThrows
-        public void testHandle_byDateRequest(){
+        void testHandle_byDateRequest(){
                 doNothing().when(listener).handle(any());
                 helper.send(LISTENER_TOPIC, BY_DATE_REPORT_REQUEST);
                 TimeUnit.SECONDS.sleep(5L);
@@ -70,7 +70,7 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
 
         @Test
         @SneakyThrows
-        public void testHandle_byIdsRequest(){
+        void testHandle_byIdsRequest(){
                 doNothing().when(listener).handle(any());
                 helper.send(LISTENER_TOPIC, BY_IDS_REPORT_REQUEST);
                 TimeUnit.SECONDS.sleep(5L);
@@ -81,7 +81,7 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
         }
 
         @Test
-        public void testHandle_deserialization_byDateRequest() {
+        void testHandle_deserialization_byDateRequest() {
                 doNothing().when(listener).handle(any());
                 helper.send(LISTENER_TOPIC, BY_DATE_REPORT_REQUEST);
                 ArgumentCaptor<ByDateReportRequest> listenerCaptor = ArgumentCaptor.forClass(ByDateReportRequest.class);
@@ -91,7 +91,7 @@ public class ReportRequestListenerIntegrationTest extends GenericTest {
         }
 
         @Test
-        public void testHandle_deserialization_byIdsRequest() {
+        void testHandle_deserialization_byIdsRequest() {
                 doNothing().when(listener).handle(any());
                 helper.send(LISTENER_TOPIC, BY_IDS_REPORT_REQUEST);
                 ArgumentCaptor<ByIdsReportRequest> listenerCaptor = ArgumentCaptor.forClass(ByIdsReportRequest.class);

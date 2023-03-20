@@ -4,12 +4,12 @@ import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.ReportType;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.persistence.repo.RefundRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -17,8 +17,8 @@ import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ByDateRefundReportProcessorTest {
+@ExtendWith(MockitoExtension.class)
+class ByDateRefundReportProcessorTest {
 
     @Spy
     @InjectMocks
@@ -34,17 +34,17 @@ public class ByDateRefundReportProcessorTest {
     private Report report;
 
     @Test
-    public void testGetReportType() {
+    void testGetReportType() {
         assertThat(processor.getReportType()).isEqualTo(ReportType.REFUNDS_REPORT);
     }
 
     @Test
-    public void testGetRequestClass() {
+    void testGetRequestClass() {
         assertThat(processor.getRequestClass()).isEqualTo(ByDateReportRequest.class);
     }
 
     @Test
-    public void testProcess() {
+    void testProcess() {
         doReturn(report).when(processor).createReport(any(), anyList());
         assertThat(processor.process(request))
                 .isNotNull()

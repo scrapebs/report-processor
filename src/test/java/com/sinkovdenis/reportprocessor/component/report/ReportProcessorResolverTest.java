@@ -1,11 +1,11 @@
 package com.sinkovdenis.reportprocessor.component.report;
 
 import com.sinkovdenis.reportprocessor.model.request.GenericReportRequest;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +14,8 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ReportProcessorResolverTest  {
+@ExtendWith(MockitoExtension.class)
+class ReportProcessorResolverTest  {
 
     @Mock
     private List<ReportProcessor<?>> reportProcessorList;
@@ -30,14 +30,14 @@ public class ReportProcessorResolverTest  {
     private ReportProcessorResolver resolver;
 
     @Test
-    public void testResolveBy() {
+    void testResolveBy() {
         when(reportProcessor.support(request)).thenReturn(true);
         when(reportProcessorList.stream()).thenReturn(Stream.of(reportProcessor));
         assertThat(resolver.resolveBy(request)).isEqualTo(Optional.of(reportProcessor));
     }
 
     @Test
-    public void testResolveBy_notSupport() {
+    void testResolveBy_notSupport() {
         when(reportProcessor.support(request)).thenReturn(false);
         when(reportProcessorList.stream()).thenReturn(Stream.of(reportProcessor));
         assertThat(resolver.resolveBy(request)).isNotPresent();

@@ -7,12 +7,12 @@ import com.sinkovdenis.reportprocessor.model.ProcessingEvent;
 import com.sinkovdenis.reportprocessor.model.Report;
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.publisher.ProcessingEventPublisher;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.Optional;
 
@@ -23,8 +23,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ReportProcessorServiceTest {
+@ExtendWith(MockitoExtension.class)
+class ReportProcessorServiceTest {
     
     @Spy
     @InjectMocks
@@ -46,7 +46,6 @@ public class ReportProcessorServiceTest {
     @Mock
     private Report report;
 
-    
     @Test
     public void testProcess() {
         when(reportProcessorResolver.resolveBy(request)).thenReturn(Optional.of(reportProcessor));
@@ -63,7 +62,7 @@ public class ReportProcessorServiceTest {
     }
 
     @Test
-    public void testProcess_requestIsNotSupported() {
+    void testProcess_requestIsNotSupported() {
         when(reportProcessorResolver.resolveBy(request)).thenReturn(Optional.empty());
         doReturn(processingEvent).when(service).buildProcessingEvent(anyLong(), any(), anyString());
         
@@ -76,7 +75,7 @@ public class ReportProcessorServiceTest {
     }
 
     @Test
-    public void testProcess_exception() {
+    void testProcess_exception() {
         when(reportProcessorResolver.resolveBy(request)).thenReturn(Optional.of(reportProcessor));
         when(reportProcessor.process(request)).thenThrow(new RuntimeException("exception"));
         doReturn(processingEvent).when(service).buildProcessingEvent(anyLong(), any(), anyString());
@@ -90,14 +89,14 @@ public class ReportProcessorServiceTest {
     }
     
     @Test
-    public void testBuildProcessingEvent_withoutDetails() {
+    void testBuildProcessingEvent_withoutDetails() {
         doReturn(processingEvent).when(service).buildProcessingEvent(100L, SUCCESS, null);
         assertThat(service.buildProcessingEvent(100L, SUCCESS)).isEqualTo(processingEvent);
         verify(service).buildProcessingEvent(100L, SUCCESS, null);
     }
 
     @Test
-    public void testBuildProcessingEvent() {
+    void testBuildProcessingEvent() {
         assertThat(service.buildProcessingEvent(100L, ERROR, "message"))
                 .isEqualTo(ProcessingEvent.builder()
                         .requestId(100L)

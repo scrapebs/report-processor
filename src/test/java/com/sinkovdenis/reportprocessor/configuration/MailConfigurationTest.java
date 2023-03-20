@@ -1,7 +1,7 @@
 package com.sinkovdenis.reportprocessor.configuration;
 
 import com.sinkovdenis.reportprocessor.GenericNoKafkaTest;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static org.assertj.core.api.Assertions.assertThat;

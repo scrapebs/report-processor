@@ -1,10 +1,9 @@
 package com.sinkovdenis.reportprocessor.persistence.repo;
 
 import com.sinkovdenis.reportprocessor.GenericNoKafkaTest;
-import com.sinkovdenis.reportprocessor.GenericTest;
 import com.sinkovdenis.reportprocessor.persistence.entity.OrderEntity;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
@@ -18,7 +17,7 @@ public class OrderRepositoryTest extends GenericNoKafkaTest {
     @Autowired
     private OrderRepository repository;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         repository.deleteAll();
     }

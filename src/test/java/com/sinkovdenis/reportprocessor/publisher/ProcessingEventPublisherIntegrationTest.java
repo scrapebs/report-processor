@@ -3,8 +3,8 @@ package com.sinkovdenis.reportprocessor.publisher;
 import com.sinkovdenis.reportprocessor.GenericTest;
 import com.sinkovdenis.reportprocessor.TestSinglePartitionTopicHelper;
 import com.sinkovdenis.reportprocessor.model.ProcessingEvent;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
@@ -27,7 +27,7 @@ import static com.sinkovdenis.reportprocessor.publisher.ProcessingEventPublisher
         }
 )
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
-public class ProcessingEventPublisherIntegrationTest extends GenericTest {
+class ProcessingEventPublisherIntegrationTest extends GenericTest {
 
     @SpyBean
     private ProcessingEventPublisher publisher;
@@ -42,7 +42,7 @@ public class ProcessingEventPublisherIntegrationTest extends GenericTest {
 
     private static ProcessingEvent TEST_PROCESSING_EVENT;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         helper = new TestSinglePartitionTopicHelper(
                 embeddedKafkaBroker,
@@ -54,7 +54,7 @@ public class ProcessingEventPublisherIntegrationTest extends GenericTest {
     }
 
     @Test
-    public void testPublish() throws Exception {
+    void testPublish() throws Exception {
         helper.assertEmpty(PROCESSING_EVENTS_TOPIC, ANY_GROUP);
 
         publisher.publish(TEST_PROCESSING_EVENT);

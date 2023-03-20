@@ -2,16 +2,16 @@ package com.sinkovdenis.reportprocessor.listener;
 
 import com.sinkovdenis.reportprocessor.model.request.ByDateReportRequest;
 import com.sinkovdenis.reportprocessor.service.ReportProcessorService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
-public class ReportRequestListenerTest {
+@ExtendWith(MockitoExtension.class)
+class ReportRequestListenerTest {
 
     @Mock
     private ReportProcessorService service;
@@ -23,7 +23,7 @@ public class ReportRequestListenerTest {
     private ReportRequestListener listener;
 
     @Test
-    public void testHandle() {
+    void testHandle() {
         listener.handle(request);
         verify(service).process(request);
     }
